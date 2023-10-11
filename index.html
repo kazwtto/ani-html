@@ -148,7 +148,7 @@
         }
         
         #modalBody label {
-            font-size: 12px;
+            font-size: 11px;
         }
         
         #aniTitle {
@@ -192,9 +192,12 @@
         }
         
         #modalBody {
-            overflow-y: auto;
+            margin: 10px;
+            transition: none;
+            margin-top: 50px;
+            overflow-y: auto; /* Add this line to enable vertical scrolling */
+            max-height: calc(100% - 100px); /* Set a max-height to limit the modal height */
         }
-        
         
         @media (min-width: 769px) {
             #aniTitle #logo1 {
