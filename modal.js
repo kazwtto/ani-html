@@ -6,8 +6,6 @@ var isDragging = false;
 var startX;
 var threshold = 150; // Ajuste o valor do limiar conforme necessário
 
-
-
 function startDragging(e) {
     isDragging = true;
     startX = e.clientX || e.touches[0].clientX;
@@ -33,7 +31,7 @@ function stopDragging(e) {
         isDragging = false;
         var deltaX = Math.abs((e.clientX || e.changedTouches[0].clientX) - startX);
         
-        modal.style.transition = "all 0.5s";
+        modal.style.transition = "left 0.5s";
         if (deltaX >= threshold) {
             closeModal()
         } else {
