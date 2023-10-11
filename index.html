@@ -64,6 +64,8 @@
             
             margin: 10px;
             z-index: 99;
+            
+            overflow-y: auto;
         }
 
         
@@ -263,6 +265,7 @@
             
             var bodyM = document.getElementById("modalBody")
             if (item.type === "anime") {
+                bodyM.innerHTML = ""
                 bodyM.classList.add("anime")
                 _animesLoad(bodyM)
             }else {

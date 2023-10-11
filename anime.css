@@ -1,5 +1,6 @@
 
 .animeTable {
+    position: relative;
     background-color: #161B21;
     color: white;
     opacity: 1 !important;
