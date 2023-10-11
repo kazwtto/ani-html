@@ -26,9 +26,13 @@ async function _animesLoad(dom) {
                     <l>${syns(anime.synopsis)}</l>
                 </div>
             
+                
+                <div class="divWatch">
                 <button onclick='window.location.href = "${anime.anime_fire}";' class="watch">
-                    ASSISTIR
+                        ASSISTIR
                 </button>
+                </div>
+                
             </td>
         </tr>
         

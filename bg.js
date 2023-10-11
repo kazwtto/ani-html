@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const colors = ["#fff", "#87CEEB", "#800080", "#FF69B4", "#9400D3"];
 
     // Adicione estrelas dinamicamente
-    for (let i = 0; i < 0; i++) {
+    for (let i = 0; i < 100; i++) {
         const star = createStar();
         sky.appendChild(star);
     }

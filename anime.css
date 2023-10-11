@@ -66,10 +66,15 @@
     font-size: 8px;
 }
 
+
+.animeTable .divWatch {
+    margin-top: 20px;
+    position: relative;
+    text-align: right;
+    float: bottom;
+}
+*
 .animeTable .watch {
-    position: absolute;
-    top: 5;
-    left: 5;
     background-color: transparent;
     border: 1px solid white;
     border-radius: 5px;
