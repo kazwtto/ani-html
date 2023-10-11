@@ -14,7 +14,6 @@
             font-family: 'Space Mono' !important;
         }
         
-        
         button:focus { 
             outline: none;
         }
@@ -57,7 +56,7 @@
             position: relative; 
             
             background-color: #161B21;
-            border-radius: 15px;
+            border-radius: 13px;
             box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
             padding: 10px;
             
@@ -89,13 +88,14 @@
             background-color: #161B21;
             opacity: 0.95;
             position: fixed;
-            transition: left 0.5s;
+            transition: all 0.5s;
             color: white;
         }
         
         #modal.nostrasition {
             transition: all 0s;
         }
+        
         
         #modalHead, #modalBody {
             opacity: 1;
@@ -148,7 +148,14 @@
         }
         
         #modalBody label {
-            font-size: 11px;
+            font-size: 15px;
+            overflow-y: auto;
+        }
+        
+        #modalBody.anime {
+            align-items: center;
+            text-align: center;
+            align-content: center;
         }
         
         #aniTitle {
@@ -184,7 +191,7 @@
         }
         
         #aniOptions .optionBtn l {
-            font-size: 12px;
+            font-size: 11px;
         }
         
         #starry-sky, .twinkling-star, .star{
@@ -192,12 +199,17 @@
         }
         
         #modalBody {
-            margin: 10px;
-            margin-top: 50px;
-            overflow-y: auto; /* Add this line to enable vertical scrolling */
-            max-height: calc(100% - 100px); /* Set a max-height to limit the modal height */
+            overflow-y: auto;
         }
         
+        #modalBody {
+            margin: 10px;
+            margin-top: 50px;
+            overflow-y: auto; 
+            max-height: calc(100% - 100px);
+            transition: none;
+        }
+
         @media (min-width: 769px) {
             #aniTitle #logo1 {
                 display: none;
@@ -209,6 +221,7 @@
         }
         
     </style>
+    <link rel="stylesheet" type="text/css" href="anime.css">
     <title>Animezinhos</title>
 </head>
 <body>
@@ -231,7 +244,7 @@
     <div id="aniOptions"> </div>
     <div id="starry-sky"> </div>
 
-
+    <script src="animes.js"></script>
     <script src="modal.js"></script>
     <script src="bg.js"></script>
     
@@ -248,9 +261,15 @@
                 </td>
             `
             
-            document.getElementById("modalBody")
-            .innerHTML = `<label>${item.text}</label>`
-                
+            var bodyM = document.getElementById("modalBody")
+            if (item.type === "anime") {
+                bodyM.classList.add("anime")
+                _animesLoad(bodyM)
+            }else {
+                bodyM.classList.remove("anime")
+                bodyM.innerHTML=`<label>${item.text}</label>`
+            }
+            
             modal.style.left = "0";
         }
         
@@ -274,7 +293,7 @@
                 id   : "staff",
                 type : "href",
                 link : "https://docs.google.com/forms/d/1Hy8Kl7ta1CXmwxsxibxMVcqAJwIjU6pWlvTjimyk_Sk/viewform?edit_requested",
-                desc : "Possui interesse em ser parte da Staff? Faça o formulário agora mesmo!"
+                desc : "Possui interesse em participar da nossa Staff? Então faça o formulario agora mesmo!"
             },
             {
                 name : "HISTORIA",
@@ -289,9 +308,17 @@
                 type : "modal",
                 desc : "",
                 text : "~"
+            },
+            {
+                name : "ANIMES",
+                id   : "anime",
+                type : "anime",
+                desc : "Recomendações de animes que você definitivamente vai gostar!",
+                text : "~"
             }
         ]
         
+        openModal(obj, "anime")
         //openModal(obj, "story")
         for (var btn of obj) {
             (function (table) {
@@ -320,6 +347,8 @@
                 .appendChild(table)
                 table.addEventListener("click", () => {
                     if (table.dataset.type === "modal") {
+                        openModal(obj, table.id)
+                    } else if (table.dataset.type==="anime"){
                         openModal(obj, table.id)
                     } else {
                         openHref(obj, table.id)

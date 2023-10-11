@@ -1,0 +1,107 @@
+
+.animeTable {
+    background-color: #161B21;
+    color: white;
+    opacity: 1 !important;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+.animeTable table {
+    width: 100%;
+    border-collapse: collapse;
+    width: 250px;
+    max-width: 250px;
+}
+
+.animeTable th,
+.animeTable td {
+    position: relative;
+    /*border: 1px solid black;*/
+    padding: 5px;
+    text-align: left;
+}
+
+.animeTable img {
+    height: 200px;
+    width: 150px;
+    border-radius: 5px;
+}
+
+.animeTable .name {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.animeTable .name h2 {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 15px;
+}
+
+.animeTable .name l {
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+.animeTable .gender {
+    padding-top: 5px;
+    margin-top: 10px;
+}
+
+.animeTable .gender l {
+    font-size: 10px;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white;
+    padding: 2px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.animeTable .synopsis {
+    margin-top: 10px;
+    font-size: 8px;
+}
+
+.animeTable .watch {
+    position: absolute;
+    bottom: 5;
+    right: 5;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+    font-family: "Space Mono";
+    font-size: 10px;
+    
+    border: 0.5px solid #CE89FF;
+    color: #CE89FF;
+}
+
+.animeTable .info {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 200px;
+    height: 200px;
+    max-height: 200px;
+    max-width: 200px;
+}
+
+@media (min-width: 769px) {
+    #modalBody {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        top: 50px;
+    }
+    
+    .animeTable {
+        margin: 20px;
+    }
+}
