@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100vh;
+    background-color: #000;
+}
+
+#bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+    #89F4FF, #B6FFF3, #B6DCFF, #8993FF, #9989FF, #CE89FF, 
+    #F989FF, #FF89E5, #FF89BA);
+    opacity: 0.3;
+    background-size: 600% 600%;
+    animation: gradientBG 50s infinite;
+}
+
+@keyframes gradientBG {
+    0%   {
+        background-position: 0% 50%;
+    }
+    50%  {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.star, .twinkling-star {
+    width: 2px;
+    height: 2px;
+    position: absolute;
+    animation: blink 3s infinite, rotate 6s infinite linear; 
+}
+
+.star {
+    background-color: #fff;
+}
+
+.twinkling-star {
+    background-color: transparent;
+    animation: blink 5s infinite alternate, rotate 8s infinite linear;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

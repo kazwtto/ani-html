@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href='https://fonts.googleapis.com/css?family=Space Mono' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="bg.css">
+        
+    <style>
+        body {
+            overflow: hidden;
+            font-family: 'Space Mono' !important;
+        }
+        
+        #aniOptions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            top: 150px;
+            overflow: hidden !important;
+        
+        }
+
+        .optionBtn img {
+            height: 20px;
+            float: left;
+            margin-right: 10px;
+            vertical-align: middle;
+            filter: invert(1);
+        }
+        
+        .optionBtn label {
+            float: right;
+            vertical-align: middle;
+        }
+        
+        #aniOptions .optionBtn {
+            width: 150px;
+            height: 170px;
+            
+            max-width: 150px;
+            max-height: 170px;
+            
+            min-width: 150px;
+            min-height: 170px;
+            
+            position: relative; 
+            
+            background-color: #161B21;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+            padding: 10px;
+            
+            color: white;
+            
+            margin: 10px;
+            z-index: 99;
+        }
+
+        
+        .headerTr {
+            display: table;
+            width: 100%;
+            height: 100%;
+        }
+    
+        .headerTd {
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+        }
+        
+        #modal {
+            z-index: 9999;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100%;
+            background-color: #161B21;
+            opacity: 0.95;
+            position: fixed;
+            transition: all 0.5s;
+            color: white;
+        }
+        
+        #modal.nostrasition {
+            transition: all 0s;
+        }
+        
+        #modalHead, #modalBody {
+            opacity: 1;
+        }
+        
+        #btnClose {
+            position: relative;
+            left: 10px;
+            top: 10px;
+            border: 2px solid #ddd;
+            font-size: 20px;
+            width: 30px;
+            height: 30px;
+            max-height: 30px;
+            max-width: 30px;
+            background-color: transparent;
+            box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.2);
+            border-radius: 50%;
+            text-align: center;
+            color: red;
+            
+            border: none;
+            box-shadow: none;
+            color: white;
+        }
+        
+        #modalHead {
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        
+        #modalHead img {
+            position: absolute;
+            height: 40px;
+            top: 20px;
+            right: 20px;
+            filter: invert(1);
+        }
+        
+        #modalHead .title {
+            position: absolute;
+            right: 90px;
+            top: 19px;
+            font-size: 30px;
+        }
+        
+        #modalBody {
+            margin: 10px;
+            margin-top: 50px;
+        }
+        
+        #modalBody label {
+            font-size: 12px;
+        }
+        
+        #aniTitle {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 130px;
+            background-image: linear-gradient(
+            to top, #161B21, #123E72);
+            z-index: 99;
+            position: fixed;
+            box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+            
+            background: rgba(22, 27, 33, 0.9);
+        }
+        
+        #aniTitle .girl {
+            position: relative;
+            height: 250px;
+            left: -80px;
+            top: -2px;
+        }
+        
+        #aniTitle .logo {
+            position: absolute;
+            height: 135px;
+            top: 0;
+            right: 0;
+        }
+        
+        #aniTitle #logo2 {
+            display: none;
+        }
+        
+        #aniOptions .optionBtn l {
+            font-size: 12px;
+        }
+        
+        #starry-sky, .twinkling-star, .star{
+            z-index: 999;
+        }
+        
+        #modalBody {
+            overflow-y: auto;
+        }
+        
+        
+        @media (min-width: 769px) {
+            #aniTitle #logo1 {
+                display: none;
+            }
+            
+            #aniTitle #logo2 {
+                display: block;
+            }
+        }
+        
+    </style>
+    <title>Animezinhos</title>
+</head>
+<body>
+    
+    <div id="bg">
+    </div>
+            
+    <div id="modal">
+        <button id="btnClose">×</button>
+        <div id="modalHead"></div>
+        <div id="modalBody"></div>
+    </div>
+    
+    <div id="aniTitle"> 
+        <img src="girl.png"          class="girl">
+        <img src="mobile_logo_2.png" class="logo" id="logo1">
+        <img src="desktop_logo.png"  class="logo" id="logo2">
+    </div>
+        
+    <div id="aniOptions"> </div>
+    <div id="starry-sky"> </div>
+
+
+    <script src="modal.js"></script>
+    <script src="bg.js"></script>
+    
+    <script> 
+        var modal = document.getElementById("modal")
+        
+        function openModal(arr, id) {
+            var item = arr.find(i => i.id === id)
+            document.getElementById("modalHead")
+            .innerHTML = `
+                <td>
+                    <img src="${item.id}.png">
+                    <label class="title">${item.name}</label>
+                </td>
+            `
+            
+            document.getElementById("modalBody")
+            .innerHTML = `<label>${item.text}</label>`
+                
+            modal.style.left = "0";
+        }
+        
+        function openHref(arr, id) {
+            var item = arr.find(i => i.id === id)
+            var href = document.createElement("a")
+                href.href = item.link;
+                href.click()
+        }
+        
+        var obj = [
+            {
+                name : "SERVIDOR",
+                id   : "discord",
+                type : "href",
+                link : "https://discord.com/invite/nCpy2D9wTJ",
+                desc : "Venha se divertir conosco no nosso servidor do Discord! Entre já!"
+            },
+            {
+                name : "STAFF",
+                id   : "staff",
+                type : "href",
+                link : "https://docs.google.com/forms/d/1Hy8Kl7ta1CXmwxsxibxMVcqAJwIjU6pWlvTjimyk_Sk/viewform?edit_requested",
+                desc : "Possui interesse em participar da nossa Staff? Então faça o formulario agora mesmo!"
+            },
+            {
+                name : "HISTORIA",
+                id   : "story",
+                type : "modal",
+                desc : "Conheça a historia do Animezinhos.",
+                text : `ㅤ    O servidor Animezinhos foi criado a partir do servidor original, que era conhecido como "servidor do Bielito". No início, o servidor passou por diversas modificações e ajustes para se tornar o que é hoje. Durante esse processo, o nome foi alterado e passou a se chamar Animezinhos.<br><br>ㅤ   Ao longo do tempo, o servidor passou por diversas mudanças, principalmente relacionadas aos canais e bate-papo. O dono original, Bielito, eventualmente passou a responsabilidade para a Sakura, que assumiu o comando do servidor.<br><br>ㅤ   Atualmente, o servidor Animezinhos é conhecido por sua comunidade incrível e acolhedora. Atraiu uma base de membros apaixonados por animes e proporciona um ambiente agradável para que todos possam interagir e compartilhar sua paixão pelo tema.<br><br>ㅤ  É gratificante observar que o servidor continua crescendo e se desenvolvendo até os dias de hoje, alcançando cada vez mais pessoas interessadas em fazer parte dessa comunidade. Essa prosperidade é um testemunho da qualidade do servidor e do trabalho dedicado da equipe responsável por mantê-lo sempre atualizado e atraente para os membros.`
+            },
+            {
+                name : "PREMIOS",
+                id   : "prize",
+                type : "modal",
+                desc : "",
+                text : "~"
+            }
+        ]
+        
+        //openModal(obj, "story")
+        for (var btn of obj) {
+            (function (table) {
+                table.className    = "optionBtn"
+                table.id           = btn.id;
+                table.dataset.type = btn.type;
+                
+                var html = `
+                <thead>
+                    <tr class="headerTr">
+                        <td class="headerTd">
+                            <img src="${btn.id}.png">
+                            <label>${btn.name}</label>
+                        </td>        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <l>${btn.desc}</l>
+                    </tr>
+                </tbody>
+                `
+                
+                table.innerHTML = html;
+                document.getElementById("aniOptions")
+                .appendChild(table)
+                table.addEventListener("click", () => {
+                    if (table.dataset.type === "modal") {
+                        openModal(obj, table.id)
+                    } else {
+                        openHref(obj, table.id)
+                    }
+                })
+                
+            })(document.createElement("table"))
+        }
+    
+    </script>
+
+    
+</body>
+</html>
