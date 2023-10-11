@@ -68,8 +68,8 @@
 
 .animeTable .watch {
     position: absolute;
-    bottom: 5;
-    right: 5;
+    top: 5;
+    left: 5;
     background-color: transparent;
     border: 1px solid white;
     border-radius: 5px;
